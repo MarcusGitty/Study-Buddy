@@ -14,7 +14,7 @@ Infant stages of Study Buddy, a project for our Orbital !
 
 ## Inspiration
 
-for the format of this readme thingy [click here] https://github.com/faraday-academy/curriculum-app/blob/dev/README.md
+for the format of this readme thingy https://github.com/faraday-academy/curriculum-app/blob/dev/README.md
 ## Tech Stack
 
 ## Mock Up
