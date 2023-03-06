@@ -23,7 +23,7 @@ https://www.heap.io/topics/what-is-a-tech-stack
 
 
 ## Documentation
-
+[Our Wiki](https://github.com/MarcusGitty/Study-Buddy/wiki)
 ## Schema
 
 ## MVP Features
