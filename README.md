@@ -16,7 +16,9 @@ Infant stages of Study Buddy, a project for our Orbital !
 
 for the format of this readme thingy https://github.com/faraday-academy/curriculum-app/blob/dev/README.md
 ## Tech Stack
+To Research
 
+https://www.heap.io/topics/what-is-a-tech-stack
 ## Mock Up
 
 
