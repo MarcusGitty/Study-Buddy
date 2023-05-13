@@ -2,7 +2,7 @@
 
 Infant stages of Study Buddy, a project for our Orbital !
 
-##Link to our poster 
+## Link to our poster 
 https://www.canva.com/design/DAFilYbFbjE/pAHfygk2_oELP0yyIOAmMA/edit?analyticsCorrelationId=6ac0c7b0-6e55-42bb-ad8b-f256074ba4ee
 
 ## Table of Contents
