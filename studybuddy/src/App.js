@@ -27,7 +27,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {session ? <h1>This will be the dashboard</h1> : <LoginScreen />}
+      {session ? <LoginScreen/>: <LoginScreen />}
     </ThemeProvider>
   );
 }
