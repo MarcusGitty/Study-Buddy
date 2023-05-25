@@ -1,18 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import LoginScreen from "./components/LoginScreen";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 
+const theme = createTheme({
+  palette: {
+    background: {
+      default: "#D3D3D3"
+    }
+  }
+});
+
 function App() {
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    const subscription = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+    return () => subscription.data.subscription.unsubscribe();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-    ``
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {session ? <h1>This will be the dashboard</h1> : <LoginScreen />}
+    </ThemeProvider>
   );
 }
 
