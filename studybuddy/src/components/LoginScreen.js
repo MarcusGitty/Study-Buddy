@@ -7,7 +7,7 @@ import Logo from "../Logo.png"
 export default function LoginScreen() {
   return (
     <Container maxWidth="xs" sx={{ height: "100vh", justifyContent: "center" }}>
-      <img src ={Logo}/>
+      <img src ={Logo} alt='Our app logo'/>
       <Auth
         supabaseClient={supabase}
         appearance={{ theme: ThemeSupa }}
