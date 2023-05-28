@@ -21,10 +21,27 @@ https://www.canva.com/design/DAFilYbFbjE/pAHfygk2_oELP0yyIOAmMA/edit?analyticsCo
 
 for the format of this readme thingy https://github.com/faraday-academy/curriculum-app/blob/dev/README.md
 ## Tech Stack
-To Research
+Front End
+HTML/CSS
+JavaScript 
+ReactJS
+React Native
 
-https://www.heap.io/topics/what-is-a-tech-stack
+Back End
+
+Supabase
+
+Database
+Supabase
+
+Version Control 
+Github
+
+Deployment
+Supabase
+
 ## Mock Up
+
 
 
 ## Documentation
