@@ -7,7 +7,7 @@ const pages = ['Todo List','Assignment Tracker','Pomodoro','Progress Tracker','S
 
 export default function NavBar() {
 
-    const[anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
 
     const handleLogOutClick = () => {
         supabase.auth.signOut();
@@ -22,7 +22,7 @@ export default function NavBar() {
     };
 
     return (
-        <Box sx={{ flexGrow:0}}>
+        <Box sx={{ flexGrow:1}}>
             <AppBar position="relative">
                 <Toolbar>
                     <IconButton
@@ -51,7 +51,7 @@ export default function NavBar() {
                             open={Boolean(anchorElNav)}
                             onClose={handleNavMenuClosed}
                             sx={{
-                                display: { xs: "block", md: "none" }
+                                display: { xs: "block", md: "flex" }
                             }}
                             >
                             {pages.map((page) => (

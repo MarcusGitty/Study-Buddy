@@ -5,6 +5,7 @@ import { CssBaseline } from "@mui/material";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import DashBoard from './components/DashBoard';
+import DashboardAppPage from './components/DashBoardAppPage';
 
 const theme = createTheme({
   palette: {
@@ -37,7 +38,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {session ? <DashBoard/>: <LoginScreen />}
+      {session ? <DashboardAppPage/>: <LoginScreen />}
     </ThemeProvider>
   );
 }
