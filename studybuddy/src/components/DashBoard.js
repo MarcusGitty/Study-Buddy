@@ -35,7 +35,7 @@ export default function DashBoard() {
                     <p>Item 3</p>
                 </Grid>
                 <Grid xs={6}>
-                     <p>Item 4</p>
+                     <p>Item 5</p>
                 </Grid>
             </Grid>
 
