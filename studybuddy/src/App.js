@@ -4,15 +4,24 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
-import NavBar from './components/NavBar';
 import DashBoard from './components/DashBoard';
 
 const theme = createTheme({
   palette: {
-    background: {
-      default: "#D3D3D3"
-    }
-  }
+    mode: "light",
+    primary: {
+      light: "#757ce8",
+      main: "#42a5f5",
+      dark: "#BB86FC",
+      contrastText: "#BB86FC",
+    },
+    secondary: {
+      light: "#ff7961",
+      main: "#42a5f5",
+      dark: "#03DAC6",
+      contrastText: "#000",
+    },
+  },
 });
 
 function App() {
