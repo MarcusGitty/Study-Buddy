@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import LoginScreen from "./components/LoginScreen";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
+import NavBar from './components/NavBar';
+import DashBoard from './components/DashBoard';
 
 const theme = createTheme({
   palette: {
@@ -27,7 +28,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {session ? <LoginScreen/>: <LoginScreen />}
+      {session ? <DashBoard/>: <LoginScreen />}
     </ThemeProvider>
   );
 }
