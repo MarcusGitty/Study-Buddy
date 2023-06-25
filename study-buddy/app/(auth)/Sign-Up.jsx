@@ -3,10 +3,16 @@ import { Text, Button, ActivityIndicator, TextInput } from "react-native-paper"
 import { StyleSheet, Image, View } from "react-native";
 import { useState } from "react";
 import { supabase } from "../../lib/supabase";
+import { Stack } from "expo-router";
 
 export default function signUp() {
     return (
         <SafeAreaProvider>
+            <Stack.Screen
+                options={{
+                    headerTitle:"Sign Up"
+                }}
+            />
             <SafeAreaView style={styles.container}>
                 <Logo />
                 <Text style={{fontSize:34}}>Sign Up</Text>
