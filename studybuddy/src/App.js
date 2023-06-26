@@ -6,6 +6,11 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import DashBoard from './components/DashBoard';
 import DashboardAppPage from './components/DashBoardAppPage';
+import TasksScreen from  './components/TodoListScreen'
+import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import Timer from './components/Timer';
+import NavBar from './components/NavBar';
+
 
 const theme = createTheme({
   palette: {
@@ -38,7 +43,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {session ? <DashboardAppPage/>: <LoginScreen />}
+      {session ? 
+        <DashboardAppPage/>
+      : <LoginScreen />}
+
+      {/* <Router>
+        <Routes>
+          <Route path="/" element={<DashboardAppPage />} />
+          <Route path="/timer" element={<Timer />} />
+          <Route path="/login" element={<LoginScreen/>} />
+          <Route path="/todoList" element={<TasksScreen />} />
+        </Routes>
+      </Router> */}
     </ThemeProvider>
   );
 }
