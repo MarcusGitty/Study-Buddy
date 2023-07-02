@@ -1,7 +1,6 @@
 import { Card, Typography, CardContent, CardHeader, Grid} from "@mui/material";
 import NavBar from "./NavBar";
 
-
 export default function DashBoard() {
 
     const Item1 = () => {

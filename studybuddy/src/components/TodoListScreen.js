@@ -31,7 +31,6 @@ export default function TasksScreen() {
 
   return (
     <>
-      <NavBar />
       <Container maxWidth="sm">
         {tasks && (
           <TaskManager
