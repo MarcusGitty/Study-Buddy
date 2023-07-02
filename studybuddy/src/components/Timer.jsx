@@ -2,7 +2,6 @@ import { Button} from "@mui/material";
 import * as React from "react";
 import { useState } from "react";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-import NavBar from "./NavBar";
 
 export default function Timer() {
     const [isStarted, setStart] = useState(false);
@@ -42,8 +41,6 @@ export default function Timer() {
       }
 
     return (
-        <>
-        <NavBar/>
         <div style={{backgroundColor: '#F1F9FF'}}>
             <div>
         <div style={{marginBottom: 40, display: 'flex', alignItems:'center', justifyContent: 'center'}}>
@@ -138,6 +135,5 @@ export default function Timer() {
         </div>
         </div>
         </div>
-        </>
     )
 }

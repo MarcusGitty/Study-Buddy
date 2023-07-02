@@ -4,13 +4,12 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
-import DashBoard from './components/DashBoard';
 import DashboardAppPage from './components/DashBoardAppPage';
-import TasksScreen from  './components/TodoListScreen'
-import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import Timer from './components/Timer';
+import AssignmentTracker from './components/AssignmentTracker';
 import NavBar from './components/NavBar';
-
+import TasksScreen from './components/TodoListScreen';
 
 const theme = createTheme({
   palette: {
@@ -40,23 +39,26 @@ function App() {
     return () => subscription.data.subscription.unsubscribe();
   }, []);
 
-  return (
-    <ThemeProvider theme={theme}>
+    if (session) {
+      return(
+      <ThemeProvider theme={theme}>
       <CssBaseline />
-      {session ? 
-        <DashboardAppPage/>
-      : <LoginScreen />}
-
-      {/* <Router>
+      <NavBar />
         <Routes>
-          <Route path="/" element={<DashboardAppPage />} />
-          <Route path="/timer" element={<Timer />} />
-          <Route path="/login" element={<LoginScreen/>} />
-          <Route path="/todoList" element={<TasksScreen />} />
+          <Route path='/' element={<DashboardAppPage />}></Route>
+          <Route path='/timer' element={<Timer />}></Route>
+          <Route path='/todo' element={<TasksScreen />}></Route>
         </Routes>
-      </Router> */}
-    </ThemeProvider>
-  );
+        </ThemeProvider>
+      );
+    } else {
+      return(
+      <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <LoginScreen />
+      </ThemeProvider>
+      )
+    }
 }
 
 export default App;
