@@ -28,7 +28,7 @@ export default function NavBar() {
         <Box sx={{ flexGrow:1}}>
             <AppBar position="relative">
                 <Toolbar>
-                    <Link href="/">
+                    <Link href="/Study-Buddy">
                     <IconButton
                         size="large"
                         edge="start"
