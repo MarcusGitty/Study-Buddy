@@ -45,7 +45,7 @@ function App() {
       <CssBaseline />
       <NavBar />
         <Routes>
-          <Route path='/' element={<DashboardAppPage />}></Route>
+          <Route path='/Study-Buddy' element={<DashboardAppPage />}></Route>
           <Route path='/timer' element={<Timer />}></Route>
           <Route path='/todo' element={<TasksScreen />}></Route>
         </Routes>
