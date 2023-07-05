@@ -46,8 +46,8 @@ function App() {
       <NavBar />
         <Routes>
           <Route path='/Study-Buddy' element={<DashboardAppPage />}></Route>
-          <Route path='/timer' element={<Timer />}></Route>
-          <Route path='/todo' element={<TasksScreen />}></Route>
+          <Route path='/Study-Buddy/timer' element={<Timer />}></Route>
+          <Route path='/Study-Buddy/todo' element={<TasksScreen />}></Route>
         </Routes>
         </ThemeProvider>
       );
