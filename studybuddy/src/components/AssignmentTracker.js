@@ -2,6 +2,9 @@ import { useState} from 'react'
 import { Button } from '@mui/material'
 
 
+// Progress update as of 12/7, created the database on supabase, gonna to refactor everything based on the database
+
+
 export default function AssignmentTracker() {
 
   const [showAddTask, setShowAddTask] = useState (false)   
