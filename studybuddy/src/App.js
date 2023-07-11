@@ -10,6 +10,7 @@ import Timer from './components/Timer';
 import AssignmentTracker from './components/AssignmentTracker';
 import NavBar from './components/NavBar';
 import TasksScreen from './components/TodoListScreen';
+import ProgressTracker from './components/ProgressTracker';
 
 const theme = createTheme({
   palette: {
@@ -48,6 +49,8 @@ function App() {
           <Route path='/Study-Buddy' element={<DashboardAppPage />}></Route>
           <Route path='/timer' element={<Timer />}></Route>
           <Route path='/todo' element={<TasksScreen />}></Route>
+          <Route path='/progresstracker' element={<ProgressTracker />}></Route>
+          <Route path='/assignmentreminder' element={<AssignmentTracker />}></Route>
         </Routes>
         </ThemeProvider>
       );

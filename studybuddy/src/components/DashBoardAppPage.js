@@ -43,7 +43,9 @@ export default function DashboardAppPage() {
           </Grid>
 
           <Grid item xs={2} sm={6} md={3}>
+            <Link href='/assignmentreminder'>
             <CardMaker str='Assignment Reminder'/>
+            </Link>
           </Grid>
 
           <Grid item xs={2} sm={6} md={3}>
@@ -53,7 +55,9 @@ export default function DashboardAppPage() {
           </Grid>
 
           <Grid item xs={2} sm={6} md={3}>
+             <Link href = 'progresstracker'>
              <CardMaker str='Progress Tracker'/>
+             </Link>
           </Grid>
 
         </Grid>

@@ -4,12 +4,16 @@ import { Button, Stack, TextField, Typography,Container } from "@mui/material";
 import { supabase } from "../supabase";
 import NavBar from "./NavBar";
 import { useCallback, useEffect, useState } from "react";
+import { useId } from "react";
+
 
 
 export default function TasksScreen() {
   const [priority, setPriority] = useState(null);
   const [tasks, setTasks] = useState(null);
   const [error, setError] = useState(null);
+
+ 
 
   const fetchTasks = useCallback(() => {
     supabase
@@ -51,7 +55,6 @@ function TaskManager({ tasks, setTasks, onTasksChange }) {
   const [priority, setPriority] = useState(null);
   const [newTask, setNewTask] = useState("");
   const [error, setError] = useState(null);
-  
 
   const handleNewTaskChange = (event) => {
     setNewTask(event.target.value);
@@ -63,7 +66,7 @@ function TaskManager({ tasks, setTasks, onTasksChange }) {
       .from("ToDoList")
       .insert({ task: newTask, 
                 completed: false,
-                status: priority
+                status: priority,
                  })
       .then(({ error }) => {
         if (error) {
