@@ -11,6 +11,8 @@ import AssignmentTracker from './components/AssignmentTracker';
 import NavBar from './components/NavBar';
 import TasksScreen from './components/TodoListScreen';
 import ProgressTracker from './components/ProgressTracker';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 const theme = createTheme({
   palette: {
@@ -42,6 +44,7 @@ function App() {
 
     if (session) {
       return(
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
       <CssBaseline />
       <NavBar />
@@ -53,13 +56,16 @@ function App() {
           <Route path='/assignmentreminder' element={<AssignmentTracker />}></Route>
         </Routes>
         </ThemeProvider>
+        </LocalizationProvider>
       );
     } else {
       return(
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
       <CssBaseline />
       <LoginScreen />
       </ThemeProvider>
+      </LocalizationProvider>
       )
     }
 }

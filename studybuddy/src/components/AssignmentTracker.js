@@ -1,10 +1,34 @@
 import { Delete as DeleteIcon } from "@mui/icons-material";
-import { Checkbox, Card, Typography, Stack, IconButton, Button, TextField,Container } from "@mui/material";
+import { Checkbox, Card, Typography, Stack, IconButton, Button, TextField,Container, MenuItem} from "@mui/material";
 import { supabase } from "../supabase";
 import NavBar from "./NavBar";
 import { useCallback, useEffect, useState } from "react";
 import { useId } from "react";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
+const modules = [
+  {
+    value: 'CS2100',
+    label: 'CS2100',
+  },
+  {
+    value: 'MA1521',
+    label: 'MA1521',
+  },
+  {
+    value: 'CS2040S',
+    label: 'CS2040S',
+  },
+  {
+    value: 'IS1108',
+    label: 'IS1108',
+  },
+  {
+    value: 'CS2030S',
+    label: 'CS2030S',
+  },
+
+];
 
 
 export default function AssignmentTracker() {
@@ -12,7 +36,7 @@ export default function AssignmentTracker() {
   const [assignments, setAssignments] = useState(null);
   const [error, setError] = useState(null);
 
- 
+
 
   const fetchAssignments = useCallback(() => {
     supabase
@@ -53,7 +77,17 @@ export default function AssignmentTracker() {
 function AssignmentManager({ assignments, setAssignments, onAssignmentsChange }) {
   const [priority, setPriority] = useState(null);
   const [newAssignment, setNewAssignment] = useState("");
+  const [newDeadline, setNewDeadline] = useState("");
+  const [newModule, setNewModule] = useState("");
   const [error, setError] = useState(null);
+  
+  const handleNewDeadlineChange = (event) => {
+    setNewDeadline(event);
+  };
+
+  const handleNewModuleChange = (event) => {
+    setNewModule(event.target.value);
+  };
 
   const handleNewAssignmentChange = (event) => {
     setNewAssignment(event.target.value);
@@ -64,6 +98,8 @@ function AssignmentManager({ assignments, setAssignments, onAssignmentsChange })
     supabase
       .from("AssignmentTracker")
       .insert({ assignment: newAssignment, 
+                module: newModule,
+                Deadline: newDeadline
                  })
       .then(({ error }) => {
         if (error) {
@@ -113,16 +149,43 @@ function AssignmentManager({ assignments, setAssignments, onAssignmentsChange })
       </Typography>
       <Stack component="form" direction="row" gap={1}>
         <TextField
-          size="small"
+
           sx={{ flexGrow: 1 }}
-          placeholder="What would you like to do today?"
+          label="Assginment"
           value={newAssignment}
           onChange={handleNewAssignmentChange}
         />
+        <TextField
+          id="outlined-select-modules"
+          select
+          label="Module"
+          defaultValue="CS2030S"
+          helperText="Please select your Module"
+          value = {newModule}
+          onChange = {handleNewModuleChange}
+  
+        >
+          {modules.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+
+        <DatePicker
+            label="Deadline"
+            value = {newDeadline}
+            onChange = {handleNewDeadlineChange}
+            slotProps={{
+              textField: {
+                helperText: 'MM/DD/YYYY',
+              },
+            }}
+          />
         <Button
           type="submit"
           variant="contained"
-          size="medium"
+          size="small"
           onClick={handleNewAssignmentSubmit}
         >
           Add
@@ -167,6 +230,8 @@ function AssignmentType({ assignments, onAssignmentChange, onAssignmentDelete })
                   onChange={handleAssignmentChange(assignment.id)}
                 />
                 <Typography flexGrow={1}>{assignment.assignment}</Typography>
+                <Typography flexGrow={1}>{assignment.module}</Typography>
+                <Typography flexGrow={1}>{assignment.Deadline}</Typography>
                 <Typography flexGrow={1} fontSize={11}>{assignment.status}</Typography>
                 <IconButton color="error" onClick={handleAssignmentDelete(assignment.id)}>
                   <DeleteIcon />

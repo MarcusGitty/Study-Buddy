@@ -1,12 +1,23 @@
 import TodoListType from "./TodoListType";
 // import EmptyState from "./EmptyState";
-import { Button, Stack, TextField, Typography,Container } from "@mui/material";
+import { Button, Stack, TextField, Typography,Container, MenuItem } from "@mui/material";
 import { supabase } from "../supabase";
 import NavBar from "./NavBar";
 import { useCallback, useEffect, useState } from "react";
 import { useId } from "react";
 
 
+const priority = [
+  {
+    value: 'High Priority',
+    label: 'High Priority',
+  },
+  {
+    value: 'Low Priority',
+    label: 'Low Priority',
+  },
+
+]
 
 export default function TasksScreen() {
   const [priority, setPriority] = useState(null);
@@ -52,9 +63,13 @@ export default function TasksScreen() {
 
 
 function TaskManager({ tasks, setTasks, onTasksChange }) {
-  const [priority, setPriority] = useState(null);
+  const [newpriority, setPriority] = useState(null);
   const [newTask, setNewTask] = useState("");
   const [error, setError] = useState(null);
+
+  const handleNewPriorityChange = (event) => {
+    setPriority(event.target.value);
+  };
 
   const handleNewTaskChange = (event) => {
     setNewTask(event.target.value);
@@ -66,7 +81,7 @@ function TaskManager({ tasks, setTasks, onTasksChange }) {
       .from("ToDoList")
       .insert({ task: newTask, 
                 completed: false,
-                status: priority,
+                status: newpriority,
                  })
       .then(({ error }) => {
         if (error) {
@@ -116,12 +131,27 @@ function TaskManager({ tasks, setTasks, onTasksChange }) {
       </Typography>
       <Stack component="form" direction="row" gap={1}>
         <TextField
-          size="small"
           sx={{ flexGrow: 1 }}
           placeholder="What would you like to do today?"
           value={newTask}
           onChange={handleNewTaskChange}
         />
+        <TextField
+          id="outlined-select-modules"
+          select
+          label="Priority"
+          defaultValue="High Priority"
+          helperText="Priority"
+          value = {newpriority}
+          onChange = {handleNewPriorityChange}
+  
+        >
+        {priority.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
         <Button
           type="submit"
           variant="contained"
