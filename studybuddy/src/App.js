@@ -5,7 +5,7 @@ import { CssBaseline } from "@mui/material";
 import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import DashboardAppPage from './components/DashBoardAppPage';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import Timer from './components/Timer';
 import AssignmentTracker from './components/AssignmentTracker';
 import NavBar from './components/NavBar';
