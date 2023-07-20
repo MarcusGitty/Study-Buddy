@@ -1,9 +1,7 @@
 import { Delete as DeleteIcon } from "@mui/icons-material";
 import { Checkbox, Card, Typography, Stack, IconButton, Button, TextField,Container, MenuItem} from "@mui/material";
 import { supabase } from "../supabase";
-import NavBar from "./NavBar";
 import { useCallback, useEffect, useState } from "react";
-import { useId } from "react";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const modules = [
@@ -32,7 +30,6 @@ const modules = [
 
 
 export default function AssignmentTracker() {
-  const [priority, setPriority] = useState(null);
   const [assignments, setAssignments] = useState(null);
   const [error, setError] = useState(null);
 
@@ -75,7 +72,6 @@ export default function AssignmentTracker() {
 
 
 function AssignmentManager({ assignments, setAssignments, onAssignmentsChange }) {
-  const [priority, setPriority] = useState(null);
   const [newAssignment, setNewAssignment] = useState("");
   const [newDeadline, setNewDeadline] = useState("");
   const [newModule, setNewModule] = useState("");
@@ -99,6 +95,7 @@ function AssignmentManager({ assignments, setAssignments, onAssignmentsChange })
       .from("AssignmentTracker")
       .insert({ assignment: newAssignment, 
                 module: newModule,
+                completed: false,
                 Deadline: newDeadline
                  })
       .then(({ error }) => {
@@ -151,7 +148,7 @@ function AssignmentManager({ assignments, setAssignments, onAssignmentsChange })
         <TextField
 
           sx={{ flexGrow: 1 }}
-          label="Assginment"
+          label="Assignment"
           value={newAssignment}
           onChange={handleNewAssignmentChange}
         />
@@ -218,7 +215,7 @@ function AssignmentType({ assignments, onAssignmentChange, onAssignmentDelete })
   return (
     <>
       <Typography variant="h4" component="h2">
-        Assignment List
+        Assignments
       </Typography>
       <Stack>
         {assignments.map((assignment) => {
