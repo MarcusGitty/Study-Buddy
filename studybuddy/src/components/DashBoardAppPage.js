@@ -37,19 +37,19 @@ export default function DashboardAppPage() {
     
         <Grid container spacing={3}>
           <Grid item xs={6} sm={6} md={3}>
-            <Link href='/todo'>
+            <Link href='/#/todo'>
             <CardMaker str='Todo List'/>
             </Link>
           </Grid>
 
           <Grid item xs={2} sm={6} md={3}>
-            <Link href='/assignmentreminder'>
+            <Link href='/#/assignmentreminder'>
             <CardMaker str='Assignment Reminder'/>
             </Link>
           </Grid>
 
           <Grid item xs={2} sm={6} md={3}>
-          <Link href='/timer'>
+          <Link href='/#/timer'>
           <CardMaker str='Study Timer'/>
           </Link>
           </Grid>

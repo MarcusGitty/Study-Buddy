@@ -49,11 +49,11 @@ function App() {
       <CssBaseline />
       <NavBar />
         <Routes>
-          <Route path='/Study-Buddy' element={<DashboardAppPage />}></Route>
-          <Route path='/timer' element={<Timer />}></Route>
-          <Route path='/todo' element={<TasksScreen />}></Route>
-          <Route path='/progresstracker' element={<ProgressTracker />}></Route>
-          <Route path='/assignmentreminder' element={<AssignmentTracker />}></Route>
+          <Route exact path='/' element={<DashboardAppPage />}></Route>
+          <Route exact path='/timer' element={<Timer />}></Route>
+          <Route exact path='/todo' element={<TasksScreen />}></Route>
+          <Route exact path='/progresstracker' element={<ProgressTracker />}></Route>
+          <Route exact path='/assignmentreminder' element={<AssignmentTracker />}></Route>
         </Routes>
         </ThemeProvider>
         </LocalizationProvider>
