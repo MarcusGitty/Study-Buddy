@@ -17,6 +17,11 @@ export default function HomeLayout() {
                 tabBarLabel: "Calendar", 
                 headerTitle:"Calendar",
                 tabBarIcon: () => <Icon name='calendar-outline' type='ionicon' color='#517fa4'/>}}/>
+        <Tabs.Screen name="Insight"
+            options={{
+                tabBarLabel: "Quick View", 
+                headerTitle:"Quick View",
+                tabBarIcon: () => <Icon name='analytics-outline' type='ionicon' color='#517fa4'/>}}/>
         
         <Tabs.Screen name="Profile" 
             options={{
