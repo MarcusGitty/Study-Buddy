@@ -1,23 +1,23 @@
-import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { Button, Text } from 'react-native-paper'
-import { Link, useRouter } from 'expo-router';
+import { Text } from 'react-native-paper'
+import { useRouter } from 'expo-router';
 import { Icon } from 'react-native-elements';
+import Insight from './Insight';
 
 export default function Menu() {
     return (
         <SafeAreaProvider style={styles.container}>
             <SafeAreaView style={styles.welcomebox}>
-                <Text style={styles.text}>Welcome Back to </Text>
+                <Text data-testID='welcome' style={styles.text}>Welcome Back to </Text>
                 <Text style={styles.text}>Study Buddy!</Text>
             </SafeAreaView>
-            <SafeAreaView style={styles.menuTitle}>
+            <SafeAreaView data-testID='menu' style={styles.menuTitle}>
                 <Text style={{fontSize:25, marginLeft:10}}>Menu</Text>
                 <View style={styles.menu}>
                 <Todo />
-                <Timer />
+                <Time />
                 <Reminder />
-                <ProgressTracker />
             </View>
             </SafeAreaView>
             
@@ -25,10 +25,10 @@ export default function Menu() {
     )
 }
 
-function Todo() {
+export function Todo() {
     const router = useRouter();
     return (
-        <View>
+        <View data-testID='todo'>
         <TouchableOpacity
             onPress={() => router.push("/ToDo")}
             style={styles.menubutton}
@@ -48,10 +48,10 @@ function Todo() {
     )
 }
 
-function Timer() {
+export function Time() {
     const router = useRouter();
     return (
-        <View>
+        <View data-testID='timer'>
         <TouchableOpacity
             onPress={() => router.push("/Timer")}
             style={styles.menubutton}
@@ -71,10 +71,12 @@ function Timer() {
     )
 }
 
-function Reminder() {
+export function Reminder() {
+  const router = useRouter();
     return (
-        <View>
+        <View data-testID='reminder'>
         <TouchableOpacity
+            onPress={() => router.push("/Reminder")}
             style={styles.menubutton}
             activeOpacity={0.5}>
               <Icon
@@ -92,10 +94,12 @@ function Reminder() {
     )
 }
 
-function ProgressTracker() {
+export function ProgressTracker() {
+  const router = useRouter();
     return (
-        <View>
+        <View data-testID='progress'>
         <TouchableOpacity
+          onPress={() => router.push("/Progress")}
             style={styles.menubutton}
             activeOpacity={0.5}>
               <Icon
