@@ -2,8 +2,9 @@ import { View, StyleSheet, Alert, TouchableOpacity, ScrollView, Keyboard} from "
 import { Button, Text, TextInput } from "react-native-paper"
 import { Link } from "expo-router"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
+import { supabase } from "../../lib/supabase";
 
 export default function Timer() {
     const [mm, setMinutes] = useState('');
@@ -14,12 +15,11 @@ export default function Timer() {
     const [rkey, setrKey] = useState(1);
     const [studyTimer, setSTimer] = useState(0);
     const [rest, setRest] = useState(0);
+    const [disable, setdisable] = useState(false);
 
     var timeinss = Number(mm) * 60;
     var restinss = Number(rmm) * 60
-
-    var totalTime = 0;
-
+  
     const children = ({ remainingTime }) => {
         const hours = Math.floor(remainingTime / 3600)
         const minutes = Math.floor((remainingTime % 3600) / 60)
@@ -58,7 +58,7 @@ export default function Timer() {
         <View style={[styles.title, {marginBottom: 40}]}>
             <Text style={styles.text}>Study Timer</Text>
         </View>
-        <View style={[styles.timer, {justifyContent: 'space-evenly'}]}>
+        <View data-testID="circles" style={[styles.timer, {justifyContent: 'space-evenly'}]}>
         <CountdownCircleTimer
             isPlaying={isStarted}
             size={150}
@@ -74,7 +74,7 @@ export default function Timer() {
             {({ remainingTime }) => 
             <View style={styles.title}>
                 <Text>Study</Text>
-                <Text>{children({remainingTime})}</Text>
+                <Text data-testID="studyTime">{children({remainingTime})}</Text>
             </View>
             }
         </CountdownCircleTimer>
@@ -92,23 +92,24 @@ export default function Timer() {
             {({ remainingTime }) => 
             <View style={styles.title}>
             <Text>Rest</Text>
-            <Text>{children({remainingTime})}</Text>
+            <Text data-testID="restTime">{children({remainingTime})}</Text>
         </View>}
         </CountdownCircleTimer>
         </View>
         <View style={styles.buttons}>
-            <TouchableOpacity onPress={() => {
+                <Button mode="contained-tonal" 
+                onPress={() => {
                 setSTimer(0);
                 setRest(0);
-                setsKey((prevkey) => prevkey+2)
-                setrKey((prevkey => prevkey+2))
-            }} style={styles.buttons}>
-                <Button mode="contained-tonal" style={{width:100}}>Cancel</Button>
-            </TouchableOpacity>
+                setsKey((prevkey) => prevkey+2);
+                setrKey((prevkey => prevkey+2));
+                setdisable(false);
+            }}>Cancel</Button>
             <View>
-            <TouchableOpacity onPress={() => setStart(true) && setReststart(true)} style={styles.buttons}>
-                <Button mode="contained-tonal" style={{width: 100}}>Start</Button>
-            </TouchableOpacity>
+                <Button mode="contained-tonal" 
+                onPress={() => {
+                    setStart(true);
+                    setdisable(true);}}>Start</Button>
             </View>
         </View>
             <View style={styles.title}>
@@ -120,7 +121,6 @@ export default function Timer() {
                 value={mm}
                 keyboardType="numeric"
                 mode="outlined"
-                style={{height:30}}
                 onChangeText={
                     (text) => setMinutes(text)
                     }
@@ -134,7 +134,6 @@ export default function Timer() {
                 keyboardType="numeric"
                 maxLength={2}
                 mode="outlined"
-                style={{height:30}}
                 onChangeText={
                     (text) => setRmm(text)
                     }
@@ -142,28 +141,33 @@ export default function Timer() {
                 <Text style={{fontSize:20}}> Minutes </Text>
             </View>
             <View style={styles.buttons}>
-                <TouchableOpacity onPress={() => {
-                Keyboard.dismiss;
-                setSTimer(timeinss);
-                setRest(restinss);
-                setStart(false);
-                setReststart(false);
-                setMinutes("")
-                setRmm("")
-            }}>
-                <Button mode="contained-tonal" style={{width: 200}}>Set Timer</Button>
-            </TouchableOpacity>
+                <Button mode="contained-tonal" 
+                data-testID="setTimer"
+                style={styles.set}
+                disabled={disable}
+                onPress={() => {
+                    Keyboard.dismiss;
+                    setSTimer(timeinss);
+                    setRest(restinss);
+                    setStart(false);
+                    setReststart(false);
+                    setMinutes('')
+                    setRmm('')
+                }}>Set Timer</Button>
             </View>
-            <View style={styles.buttons}>
-                <TouchableOpacity onPress={() => {
+            <SafeAreaView >
+                <Button mode="contained-tonal" 
+                data-testID="pomodoro"
+                buttonColor="#7895cb"
+                style={styles.set} 
+                disabled={disable}
+                onPress={() => {
                 setSTimer(25 * 60);
                 setRest(5 * 60);
                 setStart(false);
                 setReststart(false);
-            }}>
-                <Button mode="contained-tonal" style={{width: 200}}>Pomodoro Timer</Button>
-            </TouchableOpacity>
-            </View>
+            }}>Pomodoro Timer</Button>
+            </SafeAreaView>
             </View>
             </View>
         </SafeAreaView>
@@ -201,5 +205,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         margin: 20,
+    },
+    set: {
+        minWidth: '90%',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
