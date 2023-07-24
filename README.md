@@ -11,7 +11,7 @@ https://www.canva.com/design/DAFilYbFbjE/pAHfygk2_oELP0yyIOAmMA/edit?analyticsCo
 3. [Mock up](#Mock-up)
 4. [Tech Stack](#tech-stack)
 5. [Documentation](#Documentation)
-6. [Project Log](#Project Log)
+6. [Project Log](#Project-Log)
 7. [Minimum Viable Product](#MVP-Features)
 
 
@@ -27,7 +27,7 @@ The app is aimed to be an all in one app that is customizable to help you study 
 
 for the format of this readme thingy https://github.com/faraday-academy/curriculum-app/blob/dev/README.md
 
-##Mock up
+## Mock up
 Try our website here ! 
 
 Try our native-app(Android only) by scanning the qr code using expo-go app  here
