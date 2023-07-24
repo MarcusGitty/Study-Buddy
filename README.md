@@ -25,12 +25,11 @@ A Web-based App will share a common database with the Mobile App and provide the
 As students, we constantly juggle with catching up on lessons and new materials, keeping  up our grades, and also keeping track of our assignments and exams. To help us solve these problems and avoid procrastination and rushing at the last minute, it would be nice to have a study planner that’s able to keep track of our learning progress, assignments and exams, and allow us to manage our study materials in one place. 
 The app is aimed to be an all in one app that is customizable to help you study and stay organized. To make it more convenient and accessible, the app will also be available to use in both website and mobile.
 
-for the format of this readme thingy https://github.com/faraday-academy/curriculum-app/blob/dev/README.md
 
 ## Mock up
-Try our website here ! 
+Try our website [here](https://marcusgitty.github.io/Study-Buddy/) ! 
 
-Try our native-app(Android only) by scanning the qr code using expo-go app  here
+Try our native-app(Android only) by scanning the qr code using expo-go app  [here](https://expo.dev/@menatahari/study-buddy?serviceType=classic&distribution=expo-go)
 Step by step guide:
 Install the “Expo Go” app (from playstore) on your android
 Scan the qr-code using the expo app
