@@ -4,29 +4,6 @@ import { supabase } from "../supabase";
 import { useCallback, useEffect, useState } from "react";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-const modules = [
-  {
-    value: 'CS2100',
-    label: 'CS2100',
-  },
-  {
-    value: 'MA1521',
-    label: 'MA1521',
-  },
-  {
-    value: 'CS2040S',
-    label: 'CS2040S',
-  },
-  {
-    value: 'IS1108',
-    label: 'IS1108',
-  },
-  {
-    value: 'CS2030S',
-    label: 'CS2030S',
-  },
-
-];
 
 
 export default function AssignmentTracker() {
@@ -154,19 +131,11 @@ function AssignmentManager({ assignments, setAssignments, onAssignmentsChange })
         />
         <TextField
           id="outlined-select-modules"
-          select
           label="Module"
-          defaultValue="CS2030S"
           helperText="Please select your Module"
           value = {newModule}
           onChange = {handleNewModuleChange}
-  
         >
-          {modules.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
         </TextField>
 
         <DatePicker

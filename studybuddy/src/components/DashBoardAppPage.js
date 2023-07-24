@@ -37,26 +37,26 @@ export default function DashboardAppPage() {
     
         <Grid container spacing={3}>
           <Grid item xs={6} sm={6} md={3}>
-            <Link href='/#/todo'>
+            <Link href='/Study-Buddy/#/todo'>
             <CardMaker str='Todo List'/>
             </Link>
           </Grid>
 
           <Grid item xs={2} sm={6} md={3}>
-            <Link href='/#/assignmentreminder'>
+            <Link href='/Study-Buddy/#/assignmentreminder'>
             <CardMaker str='Assignment Reminder'/>
             </Link>
           </Grid>
 
           <Grid item xs={2} sm={6} md={3}>
-          <Link href='/#/timer'>
+          <Link href='/Study-Buddy/#/timer'>
           <CardMaker str='Study Timer'/>
           </Link>
           </Grid>
 
           <Grid item xs={2} sm={6} md={3}>
-             <Link href = 'progresstracker'>
-             <CardMaker str='Progress Tracker'/>
+             <Link href = 'https://www.canva.com/design/DAFm436M4D0/p9nqLqpxTT0P0Tv5eP6FJQ/view?utm_content=DAFm436M4D0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink'>
+             <CardMaker str='Project Poster'/>
              </Link>
           </Grid>
 
